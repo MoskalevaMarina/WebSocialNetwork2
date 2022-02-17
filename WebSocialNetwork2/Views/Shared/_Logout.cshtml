@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using WebSocialNetwork2.Models;
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@*@if (SignInManager.IsSignedIn(User))*@
+
+    @if (User.Identity.IsAuthenticated)
+    {
+    <form class="form-inline" method="post" asp-controller="AccountManager" asp-action="Logout">
+        <button class="btn btn-lg" style="background-color: #000000; color:white">Выход </button>
+    </form>
+    }
+   

@@ -1,0 +1,82 @@
+﻿@model WebSocialNetwork2.ViewModels.UserViewModel;
+
+@{
+    ViewData["Title"] = "Page_User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="block-reg background-white">
+
+    <h4 class="center">@Model.User.GetFullName()</h4>
+
+    <div class="row">
+        <div class="col-sm">
+            <div class="main">
+                <img class="main-img" src="@Model.User.Image" />
+                <div class="center-align">
+                    <form method="get" asp-controller="AccountManager" asp-action="Edit">
+                        <button class="btn btn-light btn-block btn-lg" style="background-color: #841bb5; color:white"> Редактировать</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+
+            <div class="side">
+                <div class="lined-block">
+                    <div>
+                        <label class="gray-text">Статус:</label>
+                        <label> @Model.User.Status</label>
+                    </div>
+
+                    <div>
+                        <label class="gray-text">Дата рождения:</label>
+                        <label> @Model.User.BirthDate.ToLongDateString()</label>
+                    </div>
+
+                    <div>
+                        <label class="gray-text">О себе:</label>
+                        <label> @Model.User.About</label>
+                    </div>
+
+                    <div>
+                        <label class="gray-text">Email:</label>
+                        <label> @Model.User.Email</label>
+                    </div>
+
+                </div>
+
+                <div class="lined-block">
+                    <label class="gray-text">Список друзей</label>
+
+                    @if (Model.Friends.Count != 0)
+                    {
+
+                      
+                            <div class="row row-cols-1 row-cols-md-3">
+
+                                @foreach (var user in @Model.Friends)
+                                {
+                                    <partial name="CardUser" model="user" />
+                                }
+                                </div>
+                          
+                              
+                           
+                                }
+                                else
+                                {
+                                <div>
+                                    <label> У вас пока нет друзей.</label>
+                                </div>
+                                }
+
+                            </div>
+
+
+                        </div>
+
+        </div>
+    </div>
+    </div>
+

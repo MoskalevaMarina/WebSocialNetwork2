@@ -1,0 +1,39 @@
+﻿@model WebSocialNetwork2.Models.UserWithFriendExt;
+@{
+    // Layout = null;
+}
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        @if (Model.Image != null)
+        {
+            <div class="col-md-4">
+                @Html.Raw("<img src='" + @Model.Image + "' style = ' width: 100%; display: block'/>")
+            </div>
+        }
+        <div class="col-md-8">
+            <div class="card-body ">
+                <h6 class="card-title ">@Model.GetFullName()</h6>
+                <label> @Model.Status</label> <br/>
+                <label> @Model.About</label>
+            </div>
+
+            @if (!Model.IsFriendWithCurrent)
+            {
+                <div class="pull-right">
+                    <form asp-controller="AccountManager" asp-action="AddFriend" asp-route-id="@Model.Id" method="post">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" style="background-color: #d482fa; ">
+                            Добавить в друзья
+                        </button>
+                    </form>
+                </div>
+            }
+            else
+            {<div class="pull-right">
+                    <h6>Мой друг </h6>
+                </div>
+            }
+        </div>
+
+    </div>
+    </div>

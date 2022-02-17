@@ -1,0 +1,27 @@
+﻿@model WebSocialNetwork2.Models.User;
+
+<div class="col mb-4">
+    <div class="card h-100" style="background-color: #FFD9E8 ">
+        @if (Model.Image != null)
+        {
+            <div class=" card-img-top">
+                @Html.Raw("<img src='" + @Model.Image + "' style = ' width: 100%; display: block'/>")
+            </div>
+        }
+        <div class="card-body ">
+            <label class="card-title ">@Model.GetFullName()</label>
+        </div>
+        <form asp-controller="AccountManager" asp-action="Chat" asp-route-id="@Model.Id" method="post">
+            <button type="submit" class="btn btn-light btn-block" style="background-color: #DE95BA; color: #FFFFFF">
+                Чат
+            </button>
+        </form>
+
+        <form asp-controller="AccountManager" asp-action="DeleteFriend" asp-route-id="@Model.Id" method="post">
+            <button type="submit" class="btn btn-light btn-block" style="background-color: #7F4A88; color: #FFFFFF ">
+                Удалить из друзей
+            </button>
+        </form>
+    </div>
+    </div>
+

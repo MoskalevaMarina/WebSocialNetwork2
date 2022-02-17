@@ -1,0 +1,26 @@
+﻿@model WebSocialNetwork2.ViewModels.SearchViewModel;
+
+
+<div class="block-reg background-white">
+
+    @if (Model.UserList.Count != 0)
+    {
+        <div class="card-group">
+            <div class="row align-items-center">
+
+                @foreach (var user in @Model.UserList)
+                {
+                    <partial name="CardUser2" model="user" />
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div>
+            <label> Поиск не дал результатов.</label>
+        </div>
+    }
+
+
+</div>
